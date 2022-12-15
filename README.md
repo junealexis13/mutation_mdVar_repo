@@ -1,10 +1,10 @@
 Created by: June Alexis A. Santos
 
-As a graduate school requirement for my thesis entitled
-** MUTATION-INDUCED MOLECULAR DYNAMIC VARIABILITY OF SARS-CoV-2 OMICRON VARIANT FROM PHILIPPINE ISOLATES AGAINST HESPERIDIN AS AN EMERGING SPIKE PROTEIN INHIBITOR **
+As a graduate school requirement for my thesis entitled <br>
+<b> MUTATION-INDUCED MOLECULAR DYNAMIC VARIABILITY OF SARS-CoV-2 OMICRON VARIANT FROM PHILIPPINE ISOLATES AGAINST HESPERIDIN AS AN EMERGING SPIKE PROTEIN INHIBITOR </b> <br>
 
-MS - Chemistry
-Adamson University
+MS - Chemistry <br>
+Adamson University <br>
 
 ---
 This repository contains necessary files to be used for the following:
