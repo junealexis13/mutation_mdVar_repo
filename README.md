@@ -16,12 +16,12 @@ This repository contains necessary files to be used for the following:
 - MD Parameter files (.mdp) for Thermostat, Barostat, and MDRUN files
 ---
 NOTE:
->    Please take note that all scripts could be subjected for further debugging and scrutiny. The scripts are written from preliminary use case and could encounter bugs during the conduct of this research.
+>    Please take note that all scripts could be subjected for further debugging and scrutiny. The scripts are written \n from preliminary use case and could encounter bugs during the conduct of this research.
 
 ---
 
 
 # Acknowledgements
 
-> Research Adviser: Sir. Arturo Gaitano III, R.Ch., M.Sc.
+> Research Adviser: Sir. Arturo Gaitano III, R.Ch., M.Sc. \n
 > Research Co-Adviser: Dr. Searle Aichelle Duay
