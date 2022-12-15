@@ -20,6 +20,10 @@ NOTE:
 
 ---
 
+Scripts Authored by:
+> June Alexis A. Santos
+
+---
 
 # Acknowledgements
 
