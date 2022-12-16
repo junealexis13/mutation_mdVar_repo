@@ -1,3 +1,5 @@
+# Introduction
+
 Created by: June Alexis A. Santos
 
 As a graduate school requirement for my thesis entitled <br>
@@ -15,17 +17,17 @@ This repository contains necessary files to be used for the following:
 - SLURM Submit algorithm for COARE HPC computing
 - MD Parameter files (.mdp) for Thermostat, Barostat, and MDRUN files
 ---
-NOTE:
+## NOTE:
 >    Please take note that all scripts could be subjected for further debugging and scrutiny. The scripts are written <br> from preliminary use case and could encounter bugs during the conduct of this research.
 
 ---
 
-Scripts Authored by:
+## Scripts Authored by:
 > June Alexis A. Santos
 
 ---
 
-# Acknowledgements
+## Acknowledgements
 
 > Research Adviser: Sir. Arturo Gaitano III, R.Ch., M.Sc. <br>
 > Research Co-Adviser: Dr. Searle Aichelle Duay
