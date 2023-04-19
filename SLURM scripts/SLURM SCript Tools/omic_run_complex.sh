@@ -23,7 +23,7 @@ elif [[ $WSUBMIT == "cpu" ]]; then
 	#SBATCH --qos=240c-1h_batch
 	#SBATCH --nodes=2
 	#SBATCH --ntasks-per-node=32
-	#SBATCH --job-name=”$WORKCODE”
+	#SBATCH --job-name="$WORKCODE"
 	#SBATCH --output=JobName.%J.out
 	#SBATCH --error=JobName.%J.err
 	#SBATCH --mail-user=june.alexis.santos@adamson.edu.ph

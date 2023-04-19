@@ -23,7 +23,7 @@ elif [[ $WSUBMIT == "cpu" ]]; then
 	#SBATCH --qos=240c-1h_batch
 	#SBATCH --nodes=2
 	#SBATCH --ntasks-per-node=32
-	#SBATCH --job-name=”$WORKCODE”
+	#SBATCH --job-name="$WORKCODE"
 	#SBATCH --output=JobName.%J.out
 	#SBATCH --error=JobName.%J.err
 	#SBATCH --mail-user=june.alexis.santos@adamson.edu.ph
@@ -71,7 +71,7 @@ fi
 if [[ -f $WD/trial_md.mdp ]] && [[ -f xxxx_npt.gro ]]; then
         #Executing MD RUN
 	if [[ $WSUBMIT == "cpu" ]]; then
-        	gmx grompp -f $WD/trial_md.mdp -c $WD/complex_lig_prot_npt.gro -t $WD/complex_lig_prot_npt.cpt -p $WD/topol.top -o $WD/xxxx_mdout.tpr
+        	gmx grompp -f $WD/trial_md.mdp -c $WD/xxxx_npt.gro -t $WD/xxxx_npt.cpt -p $WD/topol.top -o $WD/xxxx_mdout.tpr
         	gmx mdrun -ntmpi 16 -ntomp 5 -npme 4 -deffnm xxxx_mdout -s $WD/xxxx_mdout.tpr -x $WD/xxxx_mdout.xtc
 	elif [[ $WSUBMIT == "gpu" ]]; then
 		gmx grompp -f $WD/trial_md.mdp -c $WD/xxxx_npt.gro -t $WD/xxxx_npt.cpt -p $WD/topol.top -o $WD/xxxx_mdout.tpr
