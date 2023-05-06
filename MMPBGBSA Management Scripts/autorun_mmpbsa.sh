@@ -16,9 +16,13 @@ do
 	current_dir=$(pwd)
 	basename=$(basename $current_dir)
 	
-	echo "$basename"_minimization.tpr
-	echo "Running MMPBSA/decomp assesment on $current_dir"
-	gmx_MMPBSA -O -i mmpbsa.in -cs "$basename"_minimization.tpr -ct "$basename"_mdout_center.xtc -ci index.ndx -cg 1 13 -cp topol.top -o mmpbsa_"$basename".dat -eo mmpbsa_"$basename".csv
+	if [ -f mmpbsa_"$basename".csv ]; then
+		echo "Found result file :mmpbsa_"$basename".csv, skipping MMGBSA runtime"
+	else
+		echo "$basename"_minimization.tpr
+		echo "Running MMPBSA/decomp assesment on $current_dir"
+		gmx_MMPBSA -O -i mmpbsa.in -cs "$basename"_minimization.tpr -ct "$basename"_mdout_center.xtc -ci index.ndx -cg 1 13 -cp topol.top -o mmpbsa_"$basename".dat -eo mmpbsa_"$basename".csv
+	fi
 	cd ..
 	
 done
