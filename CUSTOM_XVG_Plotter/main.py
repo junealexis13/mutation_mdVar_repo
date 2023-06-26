@@ -8,20 +8,19 @@ def run_cmd(command: CMD):
         case CMD(command="help" | "h"):
             print('This is a help bar.')
 
-        case CMD(command="plot", arguments=["-f" , file, *rest]):
+        case CMD(command="gmplot", arguments=["plot","-f" | "--file" , file, *rest]):
             try:
-                plot_xvg(os.path.abspath(file), plot_label='Alpha_HBDIST').plot()
+                print(rest)
+                plot_xvg(os.path.abspath(file), others=rest).runplot()
+
             except FileNotFoundError:
                 print(f"'{file}' does not exist.")
 
-        case CMD(command= "quit" | "exit" | "bye" | "end" ):
+        case CMD(command= "quit" | "exit" | "bye" | "end" | "q"):
             quit()
 
         case _:
             print(f"Unknown command: {str(command)!r}.")
-
-
-
 
 
 def main() -> None:
