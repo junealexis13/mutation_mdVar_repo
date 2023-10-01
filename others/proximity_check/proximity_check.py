@@ -3,13 +3,13 @@ from MDAnalysis.analysis.hydrogenbonds.hbond_analysis import HydrogenBondAnalysi
 from MDAnalysis.analysis.distances import dist
 from MDAnalysis.analysis.contacts import Contacts
 import mdtraj as md
-import glob
-import os
+import glob, os
 from os import path
 from tqdm import tqdm
 import itertools
 import shutil
 import numpy as np
+import pandas as pd
 
 def get_near_res(traj: str, topol: str):
     # Load trajectory and topology using MDAnalysis
@@ -22,14 +22,15 @@ def get_near_res(traj: str, topol: str):
     ligand_atoms = u.select_atoms(lig_selection)
     protein_atoms = u.select_atoms(rec_selection)
 
+    #create a dictionary of frames
+    cont = dict()
+
     for res in protein_atoms.residues:
         get_contacts = Contacts(u,(lig_selection,f"resname {res.resname}"),refgroup=(ligand_atoms,u.select_atoms(f"resname {res.resname}")),radius=4.5)
         get_contacts.run()
-        distances = get_contacts.results.timeseries[:,1]
+        cont[res.resname+str(res.resid + 332)]= get_contacts.results.timeseries[:,1]
 
-        #save at this point
-        print(f"UNK - {res.resname+str(res.resid+332)} ::", distances[distances != 0] , f"|| Mean Value ({round(np.mean(distances[distances != 0]),3)}) ")
-        
+    return pd.DataFrame(cont, [x for x in range(1002)])
 
     # print(get_contacts.results.timeseries[:,1])
     # lres = ligand_atoms.residues
