@@ -28,7 +28,8 @@ def get_near_res(traj: str, topol: str, file_code = None):
     for res in tqdm(protein_atoms.residues, ascii = True, unit="RES",desc = "iter RES"):
         get_contacts = Contacts(u,(lig_selection,f"resid {res.resid}"),refgroup=(ligand_atoms,u.select_atoms(f"resid {res.resid}")),radius=4.5)
         get_contacts.run()
-        cont[res.resname+str(res.resid + 332)]= get_contacts.results.timeseries[:,1]
+        if not np.isnan(np.mean(get_contacts.results.timeseries[:,1])):
+            cont[res.resname+str(res.resid + 332)]= get_contacts.results.timeseries[:,1]
 
     ndf = pd.DataFrame(cont, index = [x for x in range(1001)])
     ndf.to_csv(f"others/proximity_check/data_{file_code}.csv")
