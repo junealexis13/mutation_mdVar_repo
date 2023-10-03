@@ -26,7 +26,7 @@ def get_near_res(traj: str, topol: str, file_code = None):
     cont = dict()
 
     for res in tqdm(protein_atoms.residues, ascii = True, unit="RES",desc = "iter RES"):
-        get_contacts = Contacts(u,(lig_selection,f"resname {res.resname}"),refgroup=(ligand_atoms,u.select_atoms(f"resname {res.resname}")),radius=4.5)
+        get_contacts = Contacts(u,(lig_selection,f"resid {res.resid}"),refgroup=(ligand_atoms,u.select_atoms(f"resid {res.resid}")),radius=4.5)
         get_contacts.run()
         cont[res.resname+str(res.resid + 332)]= get_contacts.results.timeseries[:,1]
 
@@ -54,3 +54,4 @@ if __name__ == "__main__":
                 file_code = file_name[-1]
 
             get_near_res(xtc_file[0],tpr_file[0], file_code=file_code)
+            break
