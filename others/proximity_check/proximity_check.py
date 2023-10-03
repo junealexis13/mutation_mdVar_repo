@@ -11,7 +11,7 @@ import shutil
 import numpy as np
 import pandas as pd
 
-def get_near_res(traj: str, topol: str):
+def get_near_res(traj: str, topol: str, file_code = None):
     # Load trajectory and topology using MDAnalysis
     u = mda.Universe(topol, traj, topology_format='TPR')
     #defining distance cutoff
@@ -25,12 +25,13 @@ def get_near_res(traj: str, topol: str):
     #create a dictionary of frames
     cont = dict()
 
-    for res in protein_atoms.residues:
+    for res in tqdm(protein_atoms.residues, ascii = True, unit="RES",desc = "iter RES"):
         get_contacts = Contacts(u,(lig_selection,f"resname {res.resname}"),refgroup=(ligand_atoms,u.select_atoms(f"resname {res.resname}")),radius=4.5)
         get_contacts.run()
         cont[res.resname+str(res.resid + 332)]= get_contacts.results.timeseries[:,1]
 
-    return pd.DataFrame(cont, [x for x in range(1002)])
+    ndf = pd.DataFrame(cont, index = [x for x in range(1001)])
+    ndf.to_csv(f"others/proximity_check/data_{file_code}.csv")
 
     # print(get_contacts.results.timeseries[:,1])
     # lres = ligand_atoms.residues
@@ -46,7 +47,10 @@ if __name__ == "__main__":
             tpr_file = glob.glob(path.join(dirpath,contents,"*minimization.tpr"))
             xtc_file = glob.glob(path.join(dirpath,contents,"*center.xtc"))
 
+            file_name = os.path.basename(path.join(dirpath, contents)).split("_")
+            if file_name[-1] == "complex":
+                file_code = file_name[0]
+            else:
+                file_code = file_name[-1]
 
-            print(get_near_res(xtc_file[0],tpr_file[0]))
-
-            break
+            get_near_res(xtc_file[0],tpr_file[0], file_code=file_code)
