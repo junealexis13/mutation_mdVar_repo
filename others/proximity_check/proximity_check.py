@@ -30,7 +30,10 @@ def get_near_res(traj: str, topol: str, file_code = None):
 
     a = u.select_atoms(f"(around {distance_cutoff} resname UNK) and (not resname SOL) and (not resname SOD) and (not resname CLA)", updating=True)
     for ts in u.trajectory:
-        print(ts.time/1000, list(set([y+332 for y in a.resids])))
+        cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
+
+    df = pd.DataFrame.from_dict(cont)
+    print(df.head())
     # lig = ligand_atoms.select_atoms("all and not name H*")
     # aa = protein_atoms.select_atoms(f"resid {res.resid}")
     # aa_terminal = aa.select_atoms(f"all and {b_chain}")
