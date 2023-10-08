@@ -46,13 +46,21 @@ def get_near_res(traj: str, topol: str, file_code = None):
 
     a = u.select_atoms(f"(around {distance_cutoff} resname UNK) and (not resname SOL) and (not resname SOD) and (not resname CLA)", updating=True)
 
-    if file_code.upper() not in mut.keys():
-        for ts in tqdm(u.trajectory, desc='Loading Traj.'):
-            cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
-    elif file_code.upper() in mut.keys():
-        print(f"Note: {file_code.upper()} has an assigned breakpoint...")   
-        for ts in tqdm(u.trajectory[:mut[file_code]]):
-            cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
+    #create a file to save each frame data
+    with open(f"{os.getcwd()}{file_code}.csv") as rd:
+
+        if file_code.upper() not in mut.keys():
+            for ts in tqdm(u.trajectory, desc='Loading Traj.'):
+                cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
+                rd.write(",".join([ts.time/100]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
+        elif file_code.upper() in mut.keys():
+            print(f"Note: {file_code.upper()} has an assigned breakpoint...")   
+            for ts in tqdm(u.trajectory[:mut[file_code]]):
+                cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
+                rd.write(",".join([ts.time/100]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
+
+        rd.close()
+
 
     end_timer = time.perf_counter()
     
