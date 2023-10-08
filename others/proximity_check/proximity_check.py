@@ -35,6 +35,7 @@ def get_near_res(traj: str, topol: str, file_code = None):
         'Q498R': 611,
         'T478K': 373,
         'N440K': 508,
+        'Y505H': 385,
         'alph' : 75
     }
     #create a dictionary of frames
@@ -44,6 +45,7 @@ def get_near_res(traj: str, topol: str, file_code = None):
     start_timer = time.perf_counter()
 
     a = u.select_atoms(f"(around {distance_cutoff} resname UNK) and (not resname SOL) and (not resname SOD) and (not resname CLA)", updating=True)
+
     if file_code.upper() not in mut.keys():
         for ts in tqdm(u.trajectory, desc='Loading Traj.'):
             cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
@@ -91,7 +93,9 @@ def process_data(data: dict):
     end_timer = time.perf_counter()
     print(f"Finished Loading: took {end_timer - start_timer:.2f}seconds to load.")
     return frame_AA
-    
+
+#################
+
 def plot_aa(data_ff: dict, sample_code: str, savepath=None, show=False):
 
     #transform into df
@@ -108,8 +112,6 @@ def plot_aa(data_ff: dict, sample_code: str, savepath=None, show=False):
     if show:
         print("Viewing plot...")
         plt.show()
-
-    return df_sorted
 
 
 
