@@ -3,7 +3,6 @@ from MDAnalysis.analysis.hydrogenbonds.hbond_analysis import HydrogenBondAnalysi
 from MDAnalysis.analysis.distances import dist
 from MDAnalysis.analysis.contacts import Contacts
 import matplotlib.pyplot as plt
-import mdtraj as md
 import glob, os
 from os import path
 from tqdm import tqdm
@@ -116,6 +115,7 @@ def plot_aa(data_ff: dict, sample_code: str, savepath=None, show=False):
     ax.bar(df_sorted.index, df_sorted['count'])
     ax.tick_params(which="major", axis="x", labelrotation=90)
     ax.set_title(f"Distribution of interacting amino acid with ligand for {sample_code} complex")
+    ax.set_ylim(0, 1000)
     plt.savefig(f"{savepath}/{file_code}.jpg",dpi=180)
 
     if show:
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     save_loc = "/Users/junealexissantos/Desktop/savepath_interacting_aa/"
 
     for contents in os.listdir(dirpath):
-        if os.path.isdir(path.join(dirpath,contents)) and "alph" in contents:
+        if os.path.isdir(path.join(dirpath,contents)):
             tpr_file = glob.glob(path.join(dirpath,contents,"*minimization.tpr"))
             xtc_file = glob.glob(path.join(dirpath,contents,"*center.xtc"))
             print(120*"#")
