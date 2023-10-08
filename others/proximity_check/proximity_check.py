@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 import time
 
-def get_near_res(traj: str, topol: str, file_code = None):
+def get_near_res(traj: str, topol: str, savepath=None, file_code = None):
     # Load trajectory and topology using MDAnalysis
     u = mda.Universe(topol, traj, topology_format='TPR')
     #defining distance cutoff
@@ -36,7 +36,7 @@ def get_near_res(traj: str, topol: str, file_code = None):
         'T478K': 373,
         'N440K': 508,
         'Y505H': 385,
-        'alph' : 75
+        'ALPH' : 75
     }
     #create a dictionary of frames
     cont = dict()
@@ -47,18 +47,19 @@ def get_near_res(traj: str, topol: str, file_code = None):
     a = u.select_atoms(f"(around {distance_cutoff} resname UNK) and (not resname SOL) and (not resname SOD) and (not resname CLA)", updating=True)
 
     #create a file to save each frame data
-    with open(f"{os.getcwd()}{file_code}.csv") as rd:
+    with open(f"{savepath}/{file_code}.csv","a") as rd:
 
         if file_code.upper() not in mut.keys():
             for ts in tqdm(u.trajectory, desc='Loading Traj.'):
                 cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
-                rd.write(",".join([ts.time/100]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
+                rd.write(",".join([str(ts.time/100)]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
+                rd.write("\n")
         elif file_code.upper() in mut.keys():
             print(f"Note: {file_code.upper()} has an assigned breakpoint...")   
-            for ts in tqdm(u.trajectory[:mut[file_code]]):
+            for ts in tqdm(u.trajectory[:mut[file_code.upper()]]):
                 cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
-                rd.write(",".join([ts.time/100]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
-
+                rd.write(",".join([str(ts.time/100)]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
+                rd.write("\n")
         rd.close()
 
 
@@ -129,7 +130,7 @@ if __name__ == "__main__":
     save_loc = "/Users/junealexissantos/Desktop/savepath_interacting_aa/"
 
     for contents in os.listdir(dirpath):
-        if os.path.isdir(path.join(dirpath,contents)):
+        if os.path.isdir(path.join(dirpath,contents)) and "alph" in contents:
             tpr_file = glob.glob(path.join(dirpath,contents,"*minimization.tpr"))
             xtc_file = glob.glob(path.join(dirpath,contents,"*center.xtc"))
             print(120*"#")
@@ -142,9 +143,10 @@ if __name__ == "__main__":
             else:
                 file_code = file_name[-1]
 
-            data = get_near_res(xtc_file[0],tpr_file[0], file_code=file_code)
+            data = get_near_res(xtc_file[0],tpr_file[0], savepath=save_loc, file_code=file_code)
             aa_distribution = process_data(data)
             plot_aa(aa_distribution, sample_code=file_code, savepath=save_loc)
+
 
             
 
