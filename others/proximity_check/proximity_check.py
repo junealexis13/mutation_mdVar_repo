@@ -47,19 +47,21 @@ def get_near_res(traj: str, topol: str, savepath=None, file_code = None):
 
     #create a file to save each frame data
     with open(f"{savepath}/{file_code}.csv","a") as rd:
-
+        #non limited runtime
         if file_code.upper() not in mut.keys():
             for ts in tqdm(u.trajectory, desc='Loading Traj.'):
                 cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
                 rd.write(",".join([str(ts.time/100)]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
                 rd.write("\n")
+            rd.close()
+        #limited runtime : The sample has an assigned ejection breakpoint. 
         elif file_code.upper() in mut.keys():
             print(f"Note: {file_code.upper()} has an assigned breakpoint...")   
             for ts in tqdm(u.trajectory[:mut[file_code.upper()]]):
                 cont[ts.time/100] = list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))
                 rd.write(",".join([str(ts.time/100)]+ list(set([f"{y+332}{x}" for y,x in zip(a.resids,a.resnames)]))))
                 rd.write("\n")
-        rd.close()
+            rd.close()
 
 
     end_timer = time.perf_counter()
