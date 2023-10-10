@@ -111,13 +111,20 @@ def plot_aa(data_ff: dict, sample_code: str, savepath=None, show=False):
     #transform into df
     df = pd.DataFrame.from_dict(data_ff, orient='index')
     df.columns = ['count']
-    df_sorted = df.sort_index()
+    df.index = [x + "*" if int(x[:3]) >= 436 and int(x[:3]) <= 506 else x for x in df.index ]
+    df_sorted = df.sort_values('count')
 
-    fig, ax = plt.subplots(figsize=(16,8))
-    ax.bar(df_sorted.index, df_sorted['count'])
-    ax.tick_params(which="major", axis="x", labelrotation=90)
-    ax.set_title(f"Distribution of interacting amino acid with ligand for {sample_code} complex")
+    fig, ax = plt.subplots(figsize=(16,6))
+    plt.grid(which='major', axis='y', linestyle="--", linewidth=1.5, alpha=0.5)
+    ax.bar(df_sorted.index, df_sorted['count'], color="#0b8026")
+    ax.tick_params(which="major", axis="x", labelrotation=45, labelsize=9, length=9, width=1)
+    ax.tick_params(which="major", axis="y", labelsize=8, length=9, width=1)
+    ax.set_title(f"Distribution of Interacting Amino Acid with Ligand for {sample_code} Complex", fontsize=12)
     ax.set_ylim(0, 1000)
+    ax.set_xlabel('Interacting Residue', labelpad=12, fontsize=12)
+    ax.set_ylabel('Frames', labelpad=10, fontsize=12)
+
+    plt.subplots_adjust(left=0.075, right=0.95, bottom=0.2, top=0.9)
     plt.savefig(f"{savepath}/{file_code}.jpg",dpi=180)
 
     if show:
@@ -148,8 +155,6 @@ if __name__ == "__main__":
             data = get_near_res(xtc_file[0],tpr_file[0], savepath=save_loc, file_code=file_code)
             aa_distribution = process_data(data)
             plot_aa(aa_distribution, sample_code=file_code, savepath=save_loc)
-
-
             
 
 
