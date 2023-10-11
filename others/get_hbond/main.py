@@ -126,12 +126,6 @@ def run_hbond_by_lig_roi(traj: str, topol: str, resid=None, name_code = None, sa
             rd.write(f"{ind},{count}\n")
         rd.close()
 
-        # save Hbond unique combination
-    with open(path.join(savepath,f'timestep_hbondbyID_{name_code}_LIG-{resid}.csv'), 'a') as rd:
-        for ind, count_by_id in enumerate(hbonds.count_by_ids()):
-            rd.write(f"{ind} - {count_by_id}\n")
-        rd.close()
-
 if __name__ == "__main__":
     
 
@@ -152,13 +146,19 @@ if __name__ == "__main__":
 
     #POST SIMULATION RUN
     #set residues of interest
-    ROI = [470,492,493,494,452,490,449]
+    ROI = {
+        "OMIC": [470,492,493,494,452,490,449],
+        "ALPHA": [505, 501, 502, 496, 403, 498, 453, 500],
+        "N440K": [472, 493, 492, 470, 484, 494, 452, 449, 490],
+        "Q493R": [493,456,489,455,494,449,496,453],
+        "Q498R": [494,453,497,489,403,498,501,456,455,493,505,495, 496],
+        "T478K": [455,502,494,453,449,500,493,497,498,403,501,495,496,505]
+        }
     for contents in os.listdir(dirpath):
         if os.path.isdir(path.join(dirpath,contents)):
             tpr_file = glob.glob(path.join(dirpath,contents,"*minimization.tpr"))
             xtc_file = glob.glob(path.join(dirpath,contents,"*center.xtc"))
-
-            for res in ROI:
-                run_hbond_by_lig_roi(xtc_file[0], tpr_file[0], resid=res, name_code=contents,savepath=post_hba,da_distance=3.5)
-                # atomic_groups(xtc_file[0], tpr_file[0])
-                print(f'Finished processing: {path.basename(tpr_file[0])} and {path.basename(xtc_file[0])}')
+            if contents in ROI.keys():
+                for res in ROI[contents]:
+                    run_hbond_by_lig_roi(xtc_file[0], tpr_file[0], resid=res, name_code=contents,savepath=post_hba,da_distance=3.5)
+                    print(f'Finished processing: {path.basename(tpr_file[0])} and {path.basename(xtc_file[0])}')
