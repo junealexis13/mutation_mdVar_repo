@@ -108,24 +108,45 @@ def process_data(data: dict):
 
 def plot_aa(data_ff: dict, sample_code: str, savepath=None, show=False):
 
+    plt_colors = {
+        "omic" : "#0802A3",
+        "Q493R" : "#FF4B91"
+    }
     #transform into df
     df = pd.DataFrame.from_dict(data_ff, orient='index')
     df.columns = ['count']
     df.index = [x + "*" if int(x[:3]) >= 436 and int(x[:3]) <= 506 else x for x in df.index ]
     df_sorted = df.sort_values('count')
 
-    fig, ax = plt.subplots(figsize=(16,6))
-    plt.grid(which='major', axis='y', linestyle="--", linewidth=1.5, alpha=0.5)
-    ax.bar(df_sorted.index, df_sorted['count'], color="#0b8026")
-    ax.tick_params(which="major", axis="x", labelrotation=45, labelsize=9, length=9, width=1)
-    ax.tick_params(which="major", axis="y", labelsize=8, length=9, width=1)
-    ax.set_title(f"Distribution of Interacting Amino Acid with Ligand for {sample_code} Complex", fontsize=12)
-    ax.set_ylim(0, 1000)
+    fig, ax = plt.subplots(figsize=(10,12), facecolor='white', dpi=300)
+    fig.patch.set_facecolor('white')
+
+    plt.grid(which='major', axis='x', linestyle="--", linewidth=0.5, alpha=0.5)
+    if file_code in plt_colors.keys():
+        ax.barh(np.arange(len(df_sorted.index)), df_sorted['count'], color=plt_colors[file_code], edgecolor="black", linewidth=1.5 )
+    else:
+        ax.barh(np.arange(len(df_sorted.index)), df_sorted['count'], color="#FFCD4B", edgecolor="black", linewidth=1.5)
+
+    for width,n in zip(df_sorted['count'], range(0,len(df_sorted.index))):
+        if width >= 0.2*max(df_sorted['count']):
+            ax.text(width + 5,n-0.5/2, str(width), fontsize=12)
+
+    ax.set_yticks(np.arange(len(df_sorted.index)), df_sorted.index)
+    ax.tick_params(which="major", axis="x", labelsize=14, length=9, width=1)
+    ax.tick_params(which="major", axis="y", labelsize=14, length=9, width=1)
+    # ax.set_title(f"Distribution of Interacting Amino Acid with Ligand for {sample_code} Complex", fontsize=12)
+    ax.set_xlim(0, 1000)
+    ax.set_ylim(0-0.5, len(df_sorted.index)-0.5)
     ax.set_xlabel('Interacting Residue', labelpad=12, fontsize=12)
     ax.set_ylabel('Frames', labelpad=10, fontsize=12)
+    ax.spines['top'].set_color('none')
+    ax.spines['right'].set_color('none')
+    ax.set_aspect('auto')
 
-    plt.subplots_adjust(left=0.075, right=0.95, bottom=0.2, top=0.9)
+    plt.subplots_adjust(left=0.075, right=0.95)
+    plt.tight_layout()
     plt.savefig(f"{savepath}/{file_code}.jpg",dpi=180)
+
 
     if show:
         print("Viewing plot...")
@@ -154,7 +175,7 @@ if __name__ == "__main__":
 
             data = get_near_res(xtc_file[0],tpr_file[0], savepath=save_loc, file_code=file_code)
             aa_distribution = process_data(data)
-            plot_aa(aa_distribution, sample_code=file_code, savepath=save_loc)
+            plot_aa(aa_distribution, sample_code=file_code, savepath=save_loc, show=False)
             
 
 
