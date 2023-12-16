@@ -114,6 +114,12 @@ def plot_aa(data_ff: dict, sample_code: str, savepath=None, show=False):
     }
     #transform into df
     df = pd.DataFrame.from_dict(data_ff, orient='index')
+
+    if "505TYR" in df.index:
+        print(f"{df.loc['505TYR']}")
+    elif "505HIS" in df.index:
+        print(f"{df.loc['505HIS']}")
+        
     df.columns = ['count']
     df.index = [x + "*" if int(x[:3]) >= 436 and int(x[:3]) <= 506 else x for x in df.index ]
     df_sorted = df.sort_values('count')
@@ -129,23 +135,28 @@ def plot_aa(data_ff: dict, sample_code: str, savepath=None, show=False):
 
     for width,n in zip(df_sorted['count'], range(0,len(df_sorted.index))):
         if width >= 0.2*max(df_sorted['count']):
-            ax.text(width + 5,n-0.5/2, str(width), fontsize=12)
+            ax.text(width + 5,n-0.5/2, str(width/10), fontsize=12)
 
     ax.set_yticks(np.arange(len(df_sorted.index)), df_sorted.index)
-    ax.tick_params(which="major", axis="x", labelsize=14, length=9, width=1)
-    ax.tick_params(which="major", axis="y", labelsize=14, length=9, width=1)
+    ax.set_xticks(np.linspace(0,1000,8))
+    ax.set_xticklabels([int(x/10) for x in np.linspace(0,1000,8)])
+
+    ax.tick_params(which="major", axis="x", labelsize=16, length=9, width=1)
+    ax.tick_params(which="major", axis="y", labelsize=16, length=9, width=1)
+
     # ax.set_title(f"Distribution of Interacting Amino Acid with Ligand for {sample_code} Complex", fontsize=12)
     ax.set_xlim(0, 1000)
     ax.set_ylim(0-0.5, len(df_sorted.index)-0.5)
-    ax.set_xlabel('Frames', labelpad=12, fontsize=12)
-    ax.set_ylabel('Interacting Residue', labelpad=10, fontsize=12)
+    ax.set_xlabel('Time (ns)', labelpad=12, fontsize=18)
+    ax.set_ylabel('Interacting Residue', labelpad=10, fontsize=18)
     ax.spines['top'].set_color('none')
     ax.spines['right'].set_color('none')
     ax.set_aspect('auto')
 
+
     plt.subplots_adjust(left=0.075, right=0.95)
     plt.tight_layout()
-    plt.savefig(f"{savepath}/{file_code}.jpg",dpi=180)
+    plt.savefig(f"{savepath}/{file_code}.jpg",dpi=300)
 
 
     if show:
