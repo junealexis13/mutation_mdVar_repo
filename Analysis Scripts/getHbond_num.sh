@@ -6,7 +6,7 @@ folder=$1
 for directory in "$folder"/*/
 do
     # Extract the directory name from the path
-    directory_name="${directory%/}"
+    directory_name="${directory%/}"xw
 
     # Do something with the directory
     echo "Processing directory: $directory_name"

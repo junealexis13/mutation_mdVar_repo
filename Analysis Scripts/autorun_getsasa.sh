@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#automatically get the SASA from MD trajectories within one folder
 # Set the folder you want to iterate through
 folder=$1
 
