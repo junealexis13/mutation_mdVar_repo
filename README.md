@@ -3,7 +3,7 @@
 Created by: June Alexis A. Santos
 
 As a graduate school requirement for my thesis entitled <br>
-<b> MUTATION-INDUCED MOLECULAR DYNAMIC VARIABILITY OF SARS-CoV-2 OMICRON VARIANT FROM PHILIPPINE ISOLATES AGAINST HESPERIDIN AS AN EMERGING SPIKE PROTEIN INHIBITOR </b> <br>
+<b> Molecular Dynamics of SARS-CoV-2 Omicron Variants from Philippine Isolates against Hesperidin as an Emerging Spike Protein Inhibitor </b> <br>
 
 MS - Chemistry <br>
 Adamson University <br>
