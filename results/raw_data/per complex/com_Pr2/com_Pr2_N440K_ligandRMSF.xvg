@@ -1,0 +1,88 @@
+# This file was created Mon Jun 19 12:21:45 2023
+# Created by:
+#                  :-) GROMACS - gmx rmsf, 2023.1-Homebrew (-:
+# 
+# Executable:   /opt/homebrew/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /opt/homebrew/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/junealexissantos/Desktop/PRELIM_DATA/com_Pr2_N440K
+# Command line:
+#   gmx rmsf -s ./com_Pr2_N440K_minimization.tpr -f ./com_Pr2_N440K_mdout_center.xtc -n ./index.ndx -o ./com_Pr2_N440K_ligandRMSF.xvg -res
+# gmx rmsf is part of G R O M A C S:
+#
+# GROningen Mixture of Alchemy and Childrens' Stories
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+  436   0.0741
+  437   0.0759
+  438   0.0712
+  439   0.0934
+  440   0.2029
+  441   0.1196
+  442   0.0630
+  443   0.0916
+  444   0.1814
+  445   0.1423
+  446   0.1178
+  447   0.0935
+  448   0.0964
+  449   0.1445
+  450   0.1439
+  451   0.0670
+  452   0.0829
+  453   0.0671
+  454   0.0503
+  455   0.0787
+  456   0.0813
+  457   0.0663
+  458   0.1811
+  459   0.0973
+  460   0.1001
+  461   0.0887
+  462   0.1573
+  463   0.0654
+  464   0.0638
+  465   0.1448
+  466   0.1396
+  467   0.0796
+  468   0.1114
+  469   0.0610
+  470   0.0772
+  471   0.1494
+  472   0.0713
+  473   0.0687
+  474   0.1395
+  475   0.1124
+  476   0.1451
+  477   0.2016
+  478   0.1893
+  479   0.1633
+  480   0.0866
+  481   0.1589
+  482   0.1091
+  483   0.1290
+  484   0.1269
+  485   0.1072
+  486   0.2121
+  487   0.1148
+  488   0.0613
+  489   0.1104
+  490   0.0717
+  491   0.0570
+  492   0.0720
+  493   0.1219
+  494   0.0760
+  495   0.0602
+  496   0.1081
+  497   0.0584
+  498   0.1289
+  499   0.1058
+  500   0.1336
+  501   0.1179
+  502   0.0844
+  503   0.1335
+  504   0.0820
+  505   0.2085
+  506   0.0870

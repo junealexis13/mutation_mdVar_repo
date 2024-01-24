@@ -1,0 +1,88 @@
+# This file was created Wed Jun 14 08:08:06 2023
+# Created by:
+#                  :-) GROMACS - gmx rmsf, 2023.1-Homebrew (-:
+# 
+# Executable:   /opt/homebrew/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /opt/homebrew/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/junealexissantos/Desktop/PRELIM DATA/com_Pr1_E484A
+# Command line:
+#   gmx rmsf -s ./com_Pr1_E484A_minimization.tpr -f ./com_Pr1_E484A_mdout_center.xtc -n ./index.ndx -o ./com_Pr1_E484A_ligandRMSF.xvg -res
+# gmx rmsf is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+  436   0.0824
+  437   0.0835
+  438   0.0747
+  439   0.1215
+  440   0.1764
+  441   0.1272
+  442   0.0578
+  443   0.0849
+  444   0.1728
+  445   0.1486
+  446   0.1208
+  447   0.0965
+  448   0.0663
+  449   0.1754
+  450   0.1297
+  451   0.0829
+  452   0.0818
+  453   0.0698
+  454   0.0524
+  455   0.0967
+  456   0.0967
+  457   0.0720
+  458   0.1944
+  459   0.0982
+  460   0.1100
+  461   0.0941
+  462   0.1652
+  463   0.0718
+  464   0.0720
+  465   0.1476
+  466   0.0970
+  467   0.0619
+  468   0.1148
+  469   0.0738
+  470   0.0938
+  471   0.1584
+  472   0.1081
+  473   0.0810
+  474   0.1557
+  475   0.1411
+  476   0.1595
+  477   0.2231
+  478   0.2010
+  479   0.1960
+  480   0.1395
+  481   0.3279
+  482   0.3003
+  483   0.3744
+  484   0.3360
+  485   0.2141
+  486   0.2599
+  487   0.1399
+  488   0.0765
+  489   0.1245
+  490   0.0852
+  491   0.0662
+  492   0.0750
+  493   0.1262
+  494   0.0851
+  495   0.0739
+  496   0.0895
+  497   0.0576
+  498   0.1229
+  499   0.1063
+  500   0.1481
+  501   0.1374
+  502   0.0993
+  503   0.1420
+  504   0.0797
+  505   0.1931
+  506   0.1360

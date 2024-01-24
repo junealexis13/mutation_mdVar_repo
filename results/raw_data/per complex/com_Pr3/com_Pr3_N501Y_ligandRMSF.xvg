@@ -1,0 +1,88 @@
+# This file was created Mon Jun 19 22:01:01 2023
+# Created by:
+#                  :-) GROMACS - gmx rmsf, 2023.1-Homebrew (-:
+# 
+# Executable:   /opt/homebrew/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /opt/homebrew/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/junealexissantos/Desktop/PRELIM_DATA/com_Pr3_N501Y
+# Command line:
+#   gmx rmsf -s ./com_Pr3_N501Y_minimization.tpr -f ./com_Pr3_N501Y_mdout_center.xtc -n ./index.ndx -o ./com_Pr3_N501Y_ligandRMSF.xvg -res
+# gmx rmsf is part of G R O M A C S:
+#
+# GROwing Monsters And Cloning Shrimps
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+  436   0.0777
+  437   0.0915
+  438   0.0802
+  439   0.1224
+  440   0.1629
+  441   0.1315
+  442   0.0870
+  443   0.0866
+  444   0.1817
+  445   0.1510
+  446   0.1359
+  447   0.1185
+  448   0.0755
+  449   0.1465
+  450   0.1452
+  451   0.0862
+  452   0.0856
+  453   0.0761
+  454   0.0492
+  455   0.0802
+  456   0.0813
+  457   0.0653
+  458   0.1713
+  459   0.0963
+  460   0.0972
+  461   0.1013
+  462   0.1437
+  463   0.0645
+  464   0.0659
+  465   0.1500
+  466   0.1141
+  467   0.0563
+  468   0.1158
+  469   0.0616
+  470   0.0881
+  471   0.1519
+  472   0.0835
+  473   0.0713
+  474   0.1499
+  475   0.1142
+  476   0.1425
+  477   0.2014
+  478   0.1885
+  479   0.1654
+  480   0.0919
+  481   0.1698
+  482   0.1215
+  483   0.1406
+  484   0.1347
+  485   0.1122
+  486   0.2189
+  487   0.1155
+  488   0.0655
+  489   0.0927
+  490   0.0795
+  491   0.0599
+  492   0.0747
+  493   0.1373
+  494   0.0957
+  495   0.1024
+  496   0.1159
+  497   0.0773
+  498   0.1235
+  499   0.0922
+  500   0.1252
+  501   0.1756
+  502   0.0925
+  503   0.1379
+  504   0.0790
+  505   0.2068
+  506   0.1439

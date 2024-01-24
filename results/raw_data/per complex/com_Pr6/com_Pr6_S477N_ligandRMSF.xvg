@@ -1,0 +1,88 @@
+# This file was created Sun Jun 25 08:36:30 2023
+# Created by:
+#                  :-) GROMACS - gmx rmsf, 2023.1-Homebrew (-:
+# 
+# Executable:   /opt/homebrew/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /opt/homebrew/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/junealexissantos/Desktop/PRELIM_DATA/com_Pr6_S477N
+# Command line:
+#   gmx rmsf -s ./com_Pr6_S477N_minimization.tpr -f ./com_Pr6_S477N_mdout_center.xtc -n ./index.ndx -o ./com_Pr6_S477N_ligandRMSF.xvg -res
+# gmx rmsf is part of G R O M A C S:
+#
+# GROtesk MACabre and Sinister
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+  436   0.0790
+  437   0.1146
+  438   0.1220
+  439   0.2668
+  440   0.1950
+  441   0.1364
+  442   0.0614
+  443   0.0947
+  444   0.1789
+  445   0.1431
+  446   0.1245
+  447   0.1021
+  448   0.0720
+  449   0.1220
+  450   0.1245
+  451   0.0925
+  452   0.0801
+  453   0.0744
+  454   0.0578
+  455   0.1011
+  456   0.1275
+  457   0.0719
+  458   0.1718
+  459   0.0989
+  460   0.1142
+  461   0.1029
+  462   0.1577
+  463   0.0706
+  464   0.0682
+  465   0.1467
+  466   0.0978
+  467   0.0589
+  468   0.1008
+  469   0.0639
+  470   0.0810
+  471   0.1559
+  472   0.0758
+  473   0.0806
+  474   0.1529
+  475   0.1198
+  476   0.1478
+  477   0.2583
+  478   0.2082
+  479   0.1826
+  480   0.0923
+  481   0.1721
+  482   0.1231
+  483   0.1440
+  484   0.1331
+  485   0.1259
+  486   0.2510
+  487   0.1187
+  488   0.0642
+  489   0.1242
+  490   0.0821
+  491   0.0744
+  492   0.0829
+  493   0.1282
+  494   0.0886
+  495   0.0745
+  496   0.0883
+  497   0.0612
+  498   0.1197
+  499   0.1048
+  500   0.1391
+  501   0.1368
+  502   0.0934
+  503   0.1406
+  504   0.0804
+  505   0.1946
+  506   0.1130

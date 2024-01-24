@@ -1,0 +1,88 @@
+# This file was created Fri Jun  9 08:17:53 2023
+# Created by:
+#                  :-) GROMACS - gmx rmsf, 2023.1-Homebrew (-:
+# 
+# Executable:   /opt/homebrew/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /opt/homebrew/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/junealexissantos/Desktop/PRELIM DATA/com_Pr7_T478K
+# Command line:
+#   gmx rmsf -s ./com_Pr7_T478K_minimization.tpr -f ./com_Pr7_T478K_mdout_center.xtc -n ./index.ndx -o ./com_Pr7_T478K_ligandRMSF.xvg -res
+# gmx rmsf is part of G R O M A C S:
+#
+# GRoups of Organic Molecules in ACtion for Science
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+  436   0.0784
+  437   0.0741
+  438   0.0582
+  439   0.0866
+  440   0.1570
+  441   0.1209
+  442   0.0623
+  443   0.0835
+  444   0.1718
+  445   0.1367
+  446   0.0995
+  447   0.0810
+  448   0.0681
+  449   0.1360
+  450   0.1329
+  451   0.0652
+  452   0.0874
+  453   0.0728
+  454   0.0509
+  455   0.0850
+  456   0.0881
+  457   0.0659
+  458   0.1741
+  459   0.0930
+  460   0.1009
+  461   0.0921
+  462   0.1577
+  463   0.0682
+  464   0.0689
+  465   0.1495
+  466   0.1225
+  467   0.0604
+  468   0.1187
+  469   0.0901
+  470   0.0828
+  471   0.1602
+  472   0.0900
+  473   0.0745
+  474   0.1575
+  475   0.1644
+  476   0.1908
+  477   0.2670
+  478   0.2736
+  479   0.1930
+  480   0.1239
+  481   0.2593
+  482   0.2636
+  483   0.2555
+  484   0.2658
+  485   0.1448
+  486   0.1960
+  487   0.1353
+  488   0.0717
+  489   0.0985
+  490   0.0797
+  491   0.0621
+  492   0.0754
+  493   0.1218
+  494   0.0863
+  495   0.0690
+  496   0.1040
+  497   0.0587
+  498   0.1260
+  499   0.1017
+  500   0.1389
+  501   0.1293
+  502   0.0851
+  503   0.1273
+  504   0.0757
+  505   0.1675
+  506   0.0694

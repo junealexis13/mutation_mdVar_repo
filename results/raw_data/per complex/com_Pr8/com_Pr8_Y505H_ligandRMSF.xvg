@@ -1,0 +1,88 @@
+# This file was created Sun Jun 11 18:52:53 2023
+# Created by:
+#                  :-) GROMACS - gmx rmsf, 2023.1-Homebrew (-:
+# 
+# Executable:   /opt/homebrew/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /opt/homebrew/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/junealexissantos/Desktop/PRELIM DATA/com_Pr8_Y505H
+# Command line:
+#   gmx rmsf -s ./com_Pr8_Y505H_minimization.tpr -f ./com_Pr8_Y505H_mdout_center.xtc -n ./index.ndx -o ./com_Pr8_Y505H_ligandRMSF.xvg -res
+# gmx rmsf is part of G R O M A C S:
+#
+# Georgetown Riga Oslo Madrid Amsterdam Chisinau Stockholm
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+  436   0.0741
+  437   0.0832
+  438   0.0764
+  439   0.1175
+  440   0.1541
+  441   0.1285
+  442   0.0757
+  443   0.0958
+  444   0.1708
+  445   0.1471
+  446   0.1237
+  447   0.1012
+  448   0.0732
+  449   0.1853
+  450   0.1509
+  451   0.0623
+  452   0.0830
+  453   0.0701
+  454   0.0503
+  455   0.0932
+  456   0.1060
+  457   0.0640
+  458   0.1598
+  459   0.0941
+  460   0.0930
+  461   0.0980
+  462   0.1455
+  463   0.0647
+  464   0.0660
+  465   0.1458
+  466   0.1118
+  467   0.0572
+  468   0.1117
+  469   0.0601
+  470   0.0757
+  471   0.1478
+  472   0.0745
+  473   0.0696
+  474   0.1569
+  475   0.1146
+  476   0.1402
+  477   0.2078
+  478   0.1883
+  479   0.1638
+  480   0.0845
+  481   0.1606
+  482   0.1111
+  483   0.1351
+  484   0.1309
+  485   0.1043
+  486   0.1861
+  487   0.1260
+  488   0.0613
+  489   0.1004
+  490   0.1053
+  491   0.0585
+  492   0.0727
+  493   0.1229
+  494   0.0941
+  495   0.0865
+  496   0.1125
+  497   0.0712
+  498   0.1220
+  499   0.1054
+  500   0.1418
+  501   0.1304
+  502   0.0984
+  503   0.1428
+  504   0.0798
+  505   0.1143
+  506   0.1070
