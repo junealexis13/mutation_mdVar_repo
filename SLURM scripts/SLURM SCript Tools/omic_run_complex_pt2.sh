@@ -15,7 +15,9 @@ if [[ $WSUBMIT == "gpu" ]]; then
 	#SBATCH --mail-user=june.alexis.santos@adamson.edu.ph
 	#SBATCH --mail-type=ALL
 
-	module load gromacs/2021.4_cuda-11.4.3
+	module load anaconda
+	mamba activate gromacs-2021.3-cuda
+
 
 
 elif [[ $WSUBMIT == "cpu" ]]; then
@@ -29,7 +31,9 @@ elif [[ $WSUBMIT == "cpu" ]]; then
 	#SBATCH --mail-user=june.alexis.santos@adamson.edu.ph
 	#SBATCH --mail-type=ALL
 
-	module load gromacs/2021
+	module load anaconda
+	mamba activate gromacs-2021.3-cuda
+
 
 
 else

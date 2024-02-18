@@ -17,7 +17,7 @@ cd $WD
 if [[ -f $WD/xxxx.gro ]]; then
         echo "Found $WD/xxxx.gro"
         #configuration for solvation
-        gmx editconf -f $WD/xxxx.gro -o $WD/xxxx_box.gro -d 1.0 -bt cubic
+        gmx editconf -f $WD/xxxx_complex.gro -o $WD/xxxx_box.gro -d 1.0 -bt cubic
         gmx solvate -cp $WD/xxxx_box.gro -cs spc216.gro -o $WD/xxxx_solv.gro  -p $WD/topol.top
 fi
 
@@ -36,6 +36,7 @@ if [[ -f $WD/minimization.mdp ]] && [[ -f $WD/xxxx_solv_ions.gro ]]; then
         #echo "10 0" | gmx energy -f $WD/xxxx_min.edr -o $WD/xxxx_min.xvg
 		
 fi
+
 
 exit 
 echo "#####################################################################END################################################################################"

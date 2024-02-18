@@ -57,8 +57,8 @@ cd $WD
 
 #Ligand Position Restraint
 if ! [[ -f UNK_posre.itp ]]; then
-	gmx make_ndx -f UNK.gro -o UNK.ndx
-	echo "3" | gmx genrestr -f UNK.gro -n UNK.ndx -o UNK_posre.itp
+	gmx make_ndx -f unk.gro -o UNK.ndx
+	echo "3" | gmx genrestr -f unk.gro -n UNK.ndx -o UNK_posre.itp
 fi
 
 

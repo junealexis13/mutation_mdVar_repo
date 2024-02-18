@@ -15,6 +15,7 @@ if [[ -f $WD/xxxx_mdout.log ]]; then
 else
 	if [[ -f $WD/nvt_omic.mdp ]] && [[ -f $WD/xxxx_min.gro ]]; then
         	#NVT equilibration
+		gmx make_ndx -f $WD/xxxx_min.gro -o $WD/xxxx_min.ndx <<< "1 | 13"$'\n'"16 | 14 | 15"$'\n'"q"
         	gmx grompp -f $WD/nvt_omic.mdp -c $WD/xxxx_min.gro -r $WD/xxxx_min.gro -p $WD/topol.top -n $WD/xxxx_min.ndx -o $WD/xxxx_equi.tpr
         	gmx mdrun -deffnm xxxx_nvt -s $WD/xxxx_equi.tpr -x $WD/xxxx_nvt.xtc
 	fi
@@ -32,9 +33,9 @@ else
 
 	fi
 
-	if [[ -f $WD/trial_md.mdp ]] && [[ -f xxxx_npt.gro ]]; then
+	if [[ -f $WD/mdout.mdp ]] && [[ -f xxxx_npt.gro ]]; then
         	#Executing MD RUN
-		gmx grompp -f $WD/trial_md.mdp -c $WD/xxxx_npt.gro -t $WD/xxxx_npt.cpt -p $WD/topol.top -n $WD/xxxx_min.ndx -o $WD/xxxx_mdout.tpr
+		gmx grompp -f $WD/mdout.mdp -c $WD/xxxx_npt.gro -r $WD/xxxx_npt.gro -t $WD/xxxx_npt.cpt -p $WD/topol.top -n $WD/xxxx_min.ndx -o $WD/xxxx_mdout.tpr
 		gmx mdrun -deffnm xxxx_mdout -nt 6 -ntmpi 2 -ntomp 3 -npme 1 -nb gpu -pme cpu -bonded gpu -s $WD/xxxx_mdout.tpr -x $WD/xxxx_mdout.xtc -maxh 72
 	fi
 fi

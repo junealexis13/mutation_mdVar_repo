@@ -56,6 +56,7 @@ for DIR in $(ls); do
 			echo "Script was not submitted. Maybe this is because of inappropriate flag or the files doesn't exist."
 		fi
 		cd .. 
+		squeue -u junealexis.santos
 	fi
 done
 

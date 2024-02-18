@@ -16,6 +16,7 @@ else
 
 	if [[ -f $WD/nvt_omic.mdp ]] && [[ -f $WD/xxxx_min.gro ]]; then
         	#NVT equilibration
+		gmx make_ndx -f $WD/xxxx_min.gro -o $WD/xxxx_min.ndx <<< "1 | 13"$'\n'"16 | 14 | 15"$'\n'"q"
         	gmx grompp -f $WD/nvt_omic.mdp -c $WD/xxxx_min.gro -r $WD/xxxx_min.gro -p $WD/topol.top -n $WD/xxxx_min.ndx -o $WD/xxxx_equi.tpr
         	gmx mdrun -deffnm xxxx_nvt -s $WD/xxxx_equi.tpr -x $WD/xxxx_nvt.xtc
 	fi
@@ -33,9 +34,9 @@ else
 
 	fi
 
-	if [[ -f $WD/trial_md.mdp ]] && [[ -f xxxx_npt.gro ]]; then
+	if [[ -f $WD/mdout.mdp ]] && [[ -f xxxx_npt.gro ]]; then
         	#Executing MD RUN
-        	gmx grompp -f $WD/trial_md.mdp -c $WD/xxxx_npt.gro -t $WD/xxxx_npt.cpt -p $WD/topol.top -n $WD/xxxx_min.ndx -o $WD/xxxx_mdout.tpr
+        	gmx grompp -f $WD/mdout.mdp -c $WD/xxxx_npt.gro -r $WD/xxxx_npt.gro -t $WD/xxxx_npt.cpt -p $WD/topol.top -n $WD/xxxx_min.ndx -o $WD/xxxx_mdout.tpr
        		gmx mdrun -ntmpi 16 -ntomp 5 -npme 4 -deffnm xxxx_mdout -s $WD/xxxx_mdout.tpr -x $WD/xxxx_mdout.xtc
 	fi
 fi

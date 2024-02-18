@@ -8,7 +8,8 @@
 #SBATCH --error=WrapTraj.%J.err
 #SBATCH --mail-user=june.alexis.santos@adamson.edu.ph
 #SBATCH --mail-type=ALL
-module load gromacs/2021
+module load anaconda
+mamba activate gromacs-2021.3-cuda
 
 
 echo "SLURM_JOBID="$SLURM_JOBID
